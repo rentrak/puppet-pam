@@ -38,6 +38,9 @@ password  <%= scope.lookupvar('pam::pamd::pam_ldap_password_set') %>
 password    required      pam_deny.so
 
 session     optional      pam_keyinit.so revoke
+<% if scope.lookupvar('pam::pamd::pam_mkhomedir') == true then -%>
+session	<%= scope.lookupvar('pam::pamd::pam_mkhomedir_session_set') %>
+<% end -%>
 session     required      pam_limits.so
 session     [success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid
 session     required      pam_unix.so

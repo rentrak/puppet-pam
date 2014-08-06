@@ -12,6 +12,6 @@ account	[success=2 new_authtok_reqd=done default=ignore]	pam_unix.so
 account	<%= scope.lookupvar('pam::pamd::pam_ldap_account_set') %>
 <% end -%>
 account requisite  pam_deny.so
-account required   pam_permit.so
 account required   pam_access.so
+account required   pam_permit.so
 

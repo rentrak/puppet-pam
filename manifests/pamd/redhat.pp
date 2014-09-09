@@ -18,7 +18,7 @@ class pam::pamd::redhat {
   file { "${pam::params::prefix_pamd}/system-auth":
     ensure => 'link',
     target => "${pam::params::prefix_pamd}/system-auth-ac",
-    force  => versioncmp($::operatingsystemmajrelease, '4') > 0
+    force  => versioncmp("${::operatingsystemmajrelease}", '4') > 0
   }
 
   if($pam::pamd::pam_ldap) {
